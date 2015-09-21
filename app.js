@@ -1,14 +1,12 @@
 $(document).ready(function () {
 	
 	function removePlayer() {
-		
 		var removeId = $(this).parents(".player-card").attr('id');
 		console.log(removeId);
 		$(this).parents(".player-card").remove();
 		Players.splice(removeId, 1);  // cant use delete as delete leaves array length unchanged
 	}
 	var thisPlayer = {};
-	var currentName = $('#playerName').val();
 	
 	$('#add-player-button').on('click', addPlayer);
 	
@@ -113,9 +111,12 @@ var PlayersService = function(endpointUri){
 var playerService = new PlayersService(apiUrl);
 
 // the function below gets triggered explicitly via HTML
+// when the user selects a team, writes the associated players to the player select form
 function teamSelected() {
-	//alert('you clicked the button');
+	
 	var sf = playerService.getPlayersByTeam("SF");
+	var det = playerService.getPlayersByTeam("DET");
+	
 	var x = document.getElementById("listOfPlayers");
 	//var x = $('#listOfPlayers');  // doesnt work
 	
@@ -145,10 +146,14 @@ function playerSelected() {
 			var selectedNum = sf[i].jersey;
 			var selectedPhoto = sf[i].photo;
 			// console.log(selectedPos, selectedNum);
-			document.getElementById("playerName").value = selectedPlayer;
-			document.getElementById("playerPosition").value = selectedPos;
-			document.getElementById("playerNumber").value = selectedNum;
-			document.getElementById("playerPhoto").value = selectedPhoto;
+			
+			$('#playerName').val(selectedPlayer);
+			$('#playerPosition').val(selectedPos);
+			$('#playerNumber').val(selectedNum);
+			$('#playerPhoto').val(selectedPhoto);
+			//document.getElementById("playerPosition").value = selectedPos;
+			//document.getElementById("playerNumber").value = selectedNum;
+			//document.getElementById("playerPhoto").value = selectedPhoto;
 		}
 	} 
 }
