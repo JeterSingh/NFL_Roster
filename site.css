@@ -1,0 +1,40 @@
+body {
+    background-color: #FFE4E1;
+}
+
+.player-roster {
+	text-align: center;
+	font-size: 16pt; 
+}
+
+.player-card {
+	margin: 10px 10px 10px 10px;
+}
+
+.panel-heading{
+	font-size: 22pt; 
+	
+}
+
+.player-form {
+	font-size: 12pt;
+	font-weight: bold; 
+	font-family:  Tahoma, Geneva, Verdana, sans-serif
+}
+
+#add-player-button {
+	background-color: red;
+	font-size: 15pt;
+	color: white;
+	font-weight: bold;
+}
+
+.btn:hover
+{
+background-image:none;
+background-color:#ff00ff;
+}
+
+.form-group{
+	width: 300;
+}

@@ -1,0 +1,58 @@
+<html>
+<head>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="site.css" />
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="app.js"></script>
+	<script type="text/javascript" src="https://rawgithub.com/yesmeck/jquery-jsonview/master/dist/jquery.jsonview.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="panel panel-primary">
+			<div class="panel-heading" style="text-align:center"><strong>My NFL Roster</strong></div>
+		</div>
+		<div class="panel-body">
+			<div class="player-roster"></div>
+		</div>
+
+		<div class="player-form">
+			<form>
+				Player Name:
+				<br>
+				<input type="text" name="name" id="playerName">
+				<br> Position:
+				<br>
+				<input type="text" name="position" id="playerPosition">
+				<br>Number:
+				<br>
+				<input type="text" name="number" id="playerNumber">
+				<br>Photo:
+				<br>
+				<input type="text" name="photo" id="playerPhoto">
+				<br>
+				<span class="btn btn-default" id="add-player-button">Submit </span>
+				<br>
+			</form>
+
+			<div class="form-group">
+				<label for="teamSelect">Team list:</label>
+				<select class="form-control" id="teamSelect" onchange="teamSelected()">
+					<option>--Select--</option>
+					<option>SF</option>
+				</select>
+				<br>
+				<label for="listOfPlayers">Player List:</label>
+				<select class="form-control" id="listOfPlayers" onchange="playerSelected()">
+					<option>--Select--</option>
+				</select>
+				
+			</div>
+
+		</div>
+	</div>
+
+
+</body>
+
+</html>
