@@ -16,6 +16,8 @@ $(document).ready(function () {
 		var position = $('#playerPosition').val();
 		var num = $('#playerNumber').val();
 		var photo =  $('#playerPhoto').val();
+		var team = document.getElementById("teamSelect").value;
+		var blankComma = " , ";
 		thisPlayer = PlayerFactory.createPlayer(name, position, num);
 		if (thisPlayer != "") {
 		console.log(thisPlayer.id); // prints out id for debugging purposes
@@ -28,7 +30,7 @@ $(document).ready(function () {
 			'<span>' + position + '</span>' +
 			'</div>' +
 			'<div>' +
-			'<span>' + num + '</span>' +
+			'<span>' + num + blankComma + team + '</span>' +
 			'</div>' +
 			'<div class="remove-button-container">' +
 			'<button class="btn btn-primary remove-button">Remove </button>' +
@@ -41,6 +43,7 @@ $(document).ready(function () {
 		$('#playerPosition').val("");
 		$('#playerNumber').val("");
 		$('#playerPhoto').val("");
+		$('#playerTeam').val("");
 		$('.remove-button').unbind().click(removePlayer); 
 		
 		
@@ -113,13 +116,14 @@ var playerService = new PlayersService(apiUrl);
 // the function below gets triggered explicitly via HTML
 // when the user selects a team, writes the associated players to the player select form
 function teamSelected() {
+	var selectedTeam = document.getElementById("teamSelect").value;
+	var sf = playerService.getPlayersByTeam(selectedTeam);
+	//console.log('Selected team is ' +selectedTeam+sf);
 	
-	var sf = playerService.getPlayersByTeam("SF");
-	var det = playerService.getPlayersByTeam("DET");
 	
 	var x = document.getElementById("listOfPlayers");
-	//var x = $('#listOfPlayers');  // doesnt work
-	
+	$('#listOfPlayers').empty(); // resets player list each time team changes
+	$('#listOfPlayers').prepend("<option value='' selected='selected'></option>");
 	for (var i =0; i<sf.length; i++) {
 		var currentPlayerName = sf[i].fullname;
 		var currentPlayerStatus = sf[i].pro_status;
@@ -135,7 +139,8 @@ function teamSelected() {
 }
 
 function playerSelected() {
-	var sf = playerService.getPlayersByTeam("SF");
+	var selectedTeam = document.getElementById("teamSelect").value;
+	var sf = playerService.getPlayersByTeam(selectedTeam);
 	var x = document.getElementById("listOfPlayers");
 	
 	var selectedPlayer = x.options[x.selectedIndex].value;
@@ -145,12 +150,14 @@ function playerSelected() {
 			var selectedPos = sf[i].position;
 			var selectedNum = sf[i].jersey;
 			var selectedPhoto = sf[i].photo;
+			var selectedTeam = sf[i].team;
 			// console.log(selectedPos, selectedNum);
 			
 			$('#playerName').val(selectedPlayer);
 			$('#playerPosition').val(selectedPos);
 			$('#playerNumber').val(selectedNum);
 			$('#playerPhoto').val(selectedPhoto);
+			$('#playerTeam').val(selectedTeam);
 			//document.getElementById("playerPosition").value = selectedPos;
 			//document.getElementById("playerNumber").value = selectedNum;
 			//document.getElementById("playerPhoto").value = selectedPhoto;
