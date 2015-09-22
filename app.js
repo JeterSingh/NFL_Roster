@@ -4,22 +4,11 @@ $(document).ready(function () {
 		var removeId = $(this).parents(".player-card").attr('id');
 			
 		$(this).parents(".player-card").remove();
-		console.log('id to be removed is ' +removeId);
 		var removeIdInt = parseInt(removeId); // removeId is apparently a string
 		
-		function returnIndexofId(id) {
-			var index = 0;		
-			for (var i =0; i < Players.length; i++){			
-				if (Players[i].id === id) {
-					index += i;
-				}
-			}
-			return index;
-		}
 		var x = returnIndexofId(removeIdInt);
-		console.log('Player lenght is '+Players.length);
-		
-		console.log('Array index to be removed is ' +x);
+		//console.log('Player lenght is '+Players.length);
+		//console.log('Array index to be removed is ' +x);
 		Players.splice(x, 1);  
 	}
 	
@@ -98,6 +87,17 @@ function checkDuplicateName(name) {
 	}
 	return duplicate;
 }
+// returns the exact position in the Players array corresponding to a given id
+function returnIndexofId(id) {
+			var index = 0;		
+			for (var i =0; i < Players.length; i++){			
+				if (Players[i].id === id) {
+					index += i;
+				}
+			}
+			return index;
+		}
+
 
 // new code using ajax to get elemenents below
 
@@ -136,7 +136,7 @@ var playerService = new PlayersService(apiUrl);
 function teamSelected() {
 	var selectedTeam = document.getElementById("teamSelect").value;
 	var sf = playerService.getPlayersByTeam(selectedTeam);
-	//console.log('Selected team is ' +selectedTeam+sf);
+	
 	
 	
 	var x = document.getElementById("listOfPlayers");
