@@ -2,10 +2,28 @@ $(document).ready(function () {
 	
 	function removePlayer() {
 		var removeId = $(this).parents(".player-card").attr('id');
-		console.log(removeId);
+			
 		$(this).parents(".player-card").remove();
-		Players.splice(removeId, 1);  // cant use delete as delete leaves array length unchanged
+		console.log('id to be removed is ' +removeId);
+		var removeIdInt = parseInt(removeId); // removeId is apparently a string
+		
+		function returnIndexofId(id) {
+			var index = 0;		
+			for (var i =0; i < Players.length; i++){			
+				if (Players[i].id === id) {
+					index += i;
+				}
+			}
+			return index;
+		}
+		var x = returnIndexofId(removeIdInt);
+		console.log('Player lenght is '+Players.length);
+		
+		console.log('Array index to be removed is ' +x);
+		Players.splice(x, 1);  
 	}
+	
+	
 	var thisPlayer = {};
 	
 	$('#add-player-button').on('click', addPlayer);
