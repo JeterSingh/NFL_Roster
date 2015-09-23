@@ -7,12 +7,11 @@ $(document).ready(function () {
 		var removeIdInt = parseInt(removeId); // removeId is apparently a string
 		
 		var x = returnIndexofId(removeIdInt);
-		//console.log('Player lenght is '+Players.length);
-		//console.log('Array index to be removed is ' +x);
 		Players.splice(x, 1);  
 		progressSum = progressSum - progressStep;
-		console.log('Progress sum is ' + progressSum);
+		currentPlayers= currentPlayers-1;
 		$("#progressbar").progressbar("value", progressSum);
+		$("#current-count").html("Current Count: " + currentPlayers);
 	}
 	
 	
@@ -59,13 +58,14 @@ $(document).ready(function () {
 		
 		
 		} 
-		else {alert('20 player limit reached OR You entered a duplicate name')};
+		else { 
+			$( "#dialog" ).dialog(); }
 	}
 
 })
 var Players = new Array();  // main array to store players
 var maxPlayers = 20;
-
+var currentPlayers = 0;
 var progressStep = 1/maxPlayers*100;
 var progressSum = 0;
 
@@ -83,8 +83,9 @@ var PlayerFactory = {
 		var p = new Player(name, position, number, this._uniqueId);
 		Players.push(p);
 		progressSum = progressSum + progressStep;
-		console.log('Progress sum is ' + progressSum);
 		$("#progressbar").progressbar("value", progressSum);
+		currentPlayers+=1;
+		$("#current-count").html("Current Count: " + currentPlayers);
 		return p;} else {return "";}
 	}
 }
@@ -186,9 +187,6 @@ function playerSelected() {
 			$('#playerNumber').val(selectedNum);
 			$('#playerPhoto').val(selectedPhoto);
 			$('#playerTeam').val(selectedTeam);
-			//document.getElementById("playerPosition").value = selectedPos;
-			//document.getElementById("playerNumber").value = selectedNum;
-			//document.getElementById("playerPhoto").value = selectedPhoto;
 		}
 	} 
 }
@@ -197,4 +195,8 @@ $(function() {
     $( "#progressbar" ).progressbar({
       value: 0
     });
+  });
+  
+$(function() {
+    $( "#dialog" ).dialog();
   });

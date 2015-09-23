@@ -7,17 +7,10 @@ body {
 	font-size: 16pt; 
 }
 
-.bar {
+.current {
 	font-size: 16pt; 
 	font-weight: bold;
 }
-
-/*.current {
-	font-size: 16pt; 
-	font-weight: bold;
-	display: inline-block;
-	text-align: center;
-}*/
 
 .max {
 	font-size: 16pt; 
