@@ -7,6 +7,24 @@ body {
 	font-size: 16pt; 
 }
 
+.bar {
+	font-size: 16pt; 
+	font-weight: bold;
+}
+
+/*.current {
+	font-size: 16pt; 
+	font-weight: bold;
+	display: inline-block;
+	text-align: center;
+}*/
+
+.max {
+	font-size: 16pt; 
+	font-weight: bold;
+	float:right
+}
+
 .player-card {
 	margin: 10px 10px 10px 10px;
 	font-weight: bold;

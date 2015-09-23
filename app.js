@@ -10,13 +10,17 @@ $(document).ready(function () {
 		//console.log('Player lenght is '+Players.length);
 		//console.log('Array index to be removed is ' +x);
 		Players.splice(x, 1);  
+		progressSum = progressSum - progressStep;
+		console.log('Progress sum is ' + progressSum);
+		$("#progressbar").progressbar("value", progressSum);
 	}
 	
 	
 	var thisPlayer = {};
 	
 	$('#add-player-button').on('click', addPlayer);
-	
+	var maxString = "Max Players: " + maxPlayers;
+	document.getElementById("max-count").innerHTML = maxString;
 						
 	function addPlayer() {
 		var name = $('#playerName').val();
@@ -62,6 +66,9 @@ $(document).ready(function () {
 var Players = new Array();  // main array to store players
 var maxPlayers = 20;
 
+var progressStep = 1/maxPlayers*100;
+var progressSum = 0;
+
 function Player(name, position, number, id) {
 	this.name = name;
 	this.position = position;
@@ -75,6 +82,9 @@ var PlayerFactory = {
 		this._uniqueId++;
 		var p = new Player(name, position, number, this._uniqueId);
 		Players.push(p);
+		progressSum = progressSum + progressStep;
+		console.log('Progress sum is ' + progressSum);
+		$("#progressbar").progressbar("value", progressSum);
 		return p;} else {return "";}
 	}
 }
@@ -182,3 +192,9 @@ function playerSelected() {
 		}
 	} 
 }
+
+$(function() {
+    $( "#progressbar" ).progressbar({
+      value: 0
+    });
+  });

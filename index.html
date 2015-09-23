@@ -1,16 +1,27 @@
 <html>
+
 <head>
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="site.css" />
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script src="app.js"></script>
 	<script type="text/javascript" src="https://rawgithub.com/yesmeck/jquery-jsonview/master/dist/jquery.jsonview.js"></script>
+
 </head>
 
 <body>
 	<div class="container">
+
 		<div class="panel panel-primary">
 			<div class="panel-heading" style="text-align:center"><strong>My NFL Roster</strong></div>
+		</div>
+		<span class = "bar">Progress Bar:</span>
+		<!--<span class = "current" id="current-count">Max Players:</span>-->
+		<span class = "max" id="max-count">Max Players:</span>
+		<div id="progressbar">
 		</div>
 		<div class="panel-body">
 			<div class="player-roster"></div>
@@ -47,7 +58,7 @@
 				<select class="form-control" id="listOfPlayers" onchange="playerSelected()">
 					<option>--Select--</option>
 				</select>
-				
+
 			</div>
 
 		</div>
