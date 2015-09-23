@@ -27,7 +27,7 @@ $(document).ready(function () {
 		var blankComma = " , ";
 		thisPlayer = PlayerFactory.createPlayer(name, position, num);
 		if (thisPlayer != "") {
-		console.log(thisPlayer.id); // prints out id for debugging purposes
+		//console.log(thisPlayer.id); // prints out id for debugging purposes
 		var html = '<div class="player-card" style="display:inline-block; border:10px solid grey" id="' + thisPlayer.id + '">' +
 			'<IMG SRC=' +photo+'>'+
 			'<div>' +
@@ -162,14 +162,14 @@ function playerSelected() {
 	var x = document.getElementById("listOfPlayers");
 	
 	var selectedPlayer = x.options[x.selectedIndex].value;
-	console.log(selectedPlayer);
+	//console.log(selectedPlayer);
 	for (var i =0; i<sf.length; i++) {
 		if (sf[i].fullname === selectedPlayer) {
 			var selectedPos = sf[i].position;
 			var selectedNum = sf[i].jersey;
 			var selectedPhoto = sf[i].photo;
 			var selectedTeam = sf[i].team;
-			// console.log(selectedPos, selectedNum);
+			
 			
 			$('#playerName').val(selectedPlayer);
 			$('#playerPosition').val(selectedPos);
